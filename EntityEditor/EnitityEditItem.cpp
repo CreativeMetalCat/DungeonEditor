@@ -19,6 +19,10 @@ EnitityEditItem::EnitityEditItem(EntityData data, QWidget* parent)
 	CREATEFIELD(IsEnemyCheckbox, QCheckBox);
 	CREATEFIELD(comboBox, QComboBox);
 
+	//prevent text boxes from taking too much space
+	NameEdit->setMaximumHeight(25);
+	DisplayNameEdit->setMaximumHeight(25);
+
 	//set values for combobox
 	comboBox->addItem("Melee");
 	comboBox->addItem("Range");
