@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EnitityEditItem.h"
+#include "EntityEditItem.h"
 #include <QtWidgets/QMainWindow>
 #include "ui_EntityEditor.h"
 
@@ -17,7 +17,9 @@ public:
 
     QWidget* scrollAreaCentralWidget;
 
-    QVector<EnitityEditItem*>Entities = QVector<EnitityEditItem*>();
+    QVector<EntityEditItem*>Entities = QVector<EntityEditItem*>();
+
+    void RemoveChild(QWidget*);
 
 private:
     Ui::EntityEditorClass ui;

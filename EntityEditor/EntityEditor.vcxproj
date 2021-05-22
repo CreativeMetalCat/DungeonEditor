@@ -86,15 +86,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="EntityEditor.qrc" />
-    <QtUic Include="EnitityEditItem.ui" />
+    <QtUic Include="EntityEditItem.ui" />
     <QtUic Include="EntityEditor.ui" />
     <QtMoc Include="EntityEditor.h" />
-    <ClCompile Include="EnitityEditItem.cpp" />
+    <ClCompile Include="EntityEditItem.cpp" />
     <ClCompile Include="EntityEditor.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="EnitityEditItem.h" />
+    <QtMoc Include="EntityEditItem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

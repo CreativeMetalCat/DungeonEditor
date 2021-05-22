@@ -1,7 +1,7 @@
 #include "EntityEditor.h"
 #include <qmessagebox>
 #include <QVBoxLayout>
-#include "EnitityEditItem.h"
+#include "EntityEditItem.h"
 #include <QFileDialog>
 #include <QJsonDocument>
 #include <QJsonArray>
@@ -45,7 +45,7 @@ void EntityEditor::OpenFile()
             for (auto it = array.begin(); it != array.end(); ++it)
             {
 
-                EnitityEditItem* item = new EnitityEditItem(
+                EntityEditItem* item = new EntityEditItem(
                     EntityData
                     (
                         SAFE_GET_JSON_VAR((*it).toObject(), "name", String, ""),
@@ -66,6 +66,14 @@ void EntityEditor::OpenFile()
         {
             QMessageBox::critical(this, "Fatal Error!", "Failed to load data file!");
         }
+    }
+}
+
+void EntityEditor::RemoveChild(QWidget*widget)
+{
+    if (!Entities.isEmpty())
+    {
+        
     }
 }
 
@@ -103,7 +111,7 @@ void EntityEditor::AddNewItem()
 {
     if (FileName != "")
     {
-        EnitityEditItem* item = new EnitityEditItem(EntityData(),this);
+        EntityEditItem* item = new EntityEditItem(EntityData(),this);
         scrollAreaLayout->addWidget(item);
         Entities.push_back(item);
     }

@@ -40,17 +40,17 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EnitityEditItem.cpp">
+    <ClCompile Include="EntityEditItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="EnitityEditItem.h">
+    <QtMoc Include="EntityEditItem.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="EnitityEditItem.ui">
+    <QtUic Include="EntityEditItem.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

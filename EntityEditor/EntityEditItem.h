@@ -8,7 +8,7 @@
 #include <QComboBox>
 
 #include <QJsonObject>
-#include "ui_EnitityEditItem.h"
+#include "ui_EntityEditItem.h"
 
 
 struct EntityData
@@ -37,13 +37,13 @@ public:
 	EntityData() {}
 };
 
-class EnitityEditItem : public QWidget
+class EntityEditItem : public QWidget
 {
 	Q_OBJECT
 
 public:
-	EnitityEditItem(EntityData,QWidget *parent = Q_NULLPTR);
-	~EnitityEditItem();
+	EntityEditItem(EntityData,QWidget *parent = Q_NULLPTR);
+	~EntityEditItem();
 
 	QTextEdit* NameEdit;
 
@@ -62,5 +62,8 @@ public:
 
 	QJsonObject GetJsonObject();
 private:
-	Ui::EnitityEditItem ui;
+	Ui::EntityEditItem ui;
+
+private slots:
+	void ShowContextMenu(const QPoint&);
 };

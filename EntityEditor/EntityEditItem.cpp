@@ -1,9 +1,11 @@
-#include "EnitityEditItem.h"
+#include "EntityEditItem.h"
 #include <QJsonArray>
+#include <QMenu>
+
 //Simple macro to simplify adding new items to this widget
 #define CREATEFIELD(field,class) field = new class(this);ui.horizontalLayout->addWidget(field)
 
-EnitityEditItem::EnitityEditItem(EntityData data, QWidget* parent)
+EntityEditItem::EntityEditItem(EntityData data, QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -51,9 +53,10 @@ EnitityEditItem::EnitityEditItem(EntityData data, QWidget* parent)
 	MoneyDropMinSpinbox->setValue(data.MinMoney);
 	MoneyDropMaxSpinbox->setValue(data.MaxMoney);
 
+	connect(this, &QWidget::customContextMenuRequested, this, &EntityEditItem::ShowContextMenu);
 }
 
-EnitityEditItem::~EnitityEditItem()
+EntityEditItem::~EntityEditItem()
 {
 	delete HealthSpinbox;
 	delete DamageSpinbox;
@@ -64,7 +67,7 @@ EnitityEditItem::~EnitityEditItem()
 	delete DisplayNameEdit;
 }
 
-QJsonObject EnitityEditItem::GetJsonObject()
+QJsonObject EntityEditItem::GetJsonObject()
 {
 	QJsonObject result = QJsonObject();
 
@@ -81,4 +84,18 @@ QJsonObject EnitityEditItem::GetJsonObject()
 	result["type"] = comboBox->currentIndex();
 
 	return result;
+}
+
+void EntityEditItem::ShowContextMenu(const QPoint& point)
+{
+	QMenu contextMenu("Context menu", this);
+
+	QAction actionDelete("Delete Item", this);
+	connect(&actionDelete, &QAction::triggered, this, [this]() 
+		{
+			delete this;
+		});
+	contextMenu.addAction(&actionDelete);
+
+	contextMenu.exec(mapToGlobal(point));
 }
