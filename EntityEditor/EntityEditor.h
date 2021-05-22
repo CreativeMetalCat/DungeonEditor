@@ -19,7 +19,7 @@ public:
 
     QVector<EntityEditItem*>Entities = QVector<EntityEditItem*>();
 
-    void RemoveChild(QWidget*);
+    void RemoveChild(int);
 
 private:
     Ui::EntityEditorClass ui;

@@ -1,7 +1,7 @@
 #include "EntityEditItem.h"
 #include <QJsonArray>
 #include <QMenu>
-
+#include "EntityEditor.h"
 //Simple macro to simplify adding new items to this widget
 #define CREATEFIELD(field,class) field = new class(this);ui.horizontalLayout->addWidget(field)
 
@@ -93,7 +93,8 @@ void EntityEditItem::ShowContextMenu(const QPoint& point)
 	QAction actionDelete("Delete Item", this);
 	connect(&actionDelete, &QAction::triggered, this, [this]() 
 		{
-			delete this;
+			owner->RemoveChild(Id);
+			deleteLater();
 		});
 	contextMenu.addAction(&actionDelete);
 

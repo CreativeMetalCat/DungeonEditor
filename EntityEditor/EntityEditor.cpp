@@ -42,9 +42,9 @@ void EntityEditor::OpenFile()
         QJsonArray array = obj["entities"].toArray();
         if (!array.empty())
         {
+            int id = 0;
             for (auto it = array.begin(); it != array.end(); ++it)
-            {
-
+            {    
                 EntityEditItem* item = new EntityEditItem(
                     EntityData
                     (
@@ -60,6 +60,9 @@ void EntityEditor::OpenFile()
                     ), this);
                 scrollAreaLayout->addWidget(item);
                 Entities.push_back(item);
+                item->Id = id;
+                item->owner = this;
+                id++;
             }
         }
         else
@@ -69,11 +72,11 @@ void EntityEditor::OpenFile()
     }
 }
 
-void EntityEditor::RemoveChild(QWidget*widget)
+void EntityEditor::RemoveChild(int id)
 {
     if (!Entities.isEmpty())
     {
-        
+        Entities.removeAt(id);
     }
 }
 
@@ -86,7 +89,10 @@ void EntityEditor::SaveFile()
         QJsonArray array = QJsonArray();
         for (auto it = Entities.begin(); it != Entities.end(); ++it)
         {
-            array.append((*it)->GetJsonObject());
+            if (*it != nullptr)
+            {
+                array.append((*it)->GetJsonObject());
+            }
         }
         obj["entities"] = array;
         QJsonDocument doc = QJsonDocument(obj);

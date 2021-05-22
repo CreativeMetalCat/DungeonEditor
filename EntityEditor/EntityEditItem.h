@@ -37,13 +37,18 @@ public:
 	EntityData() {}
 };
 
+class EntityEditor;
+
 class EntityEditItem : public QWidget
 {
 	Q_OBJECT
 
 public:
+	EntityEditor* owner;
 	EntityEditItem(EntityData,QWidget *parent = Q_NULLPTR);
 	~EntityEditItem();
+
+	int Id = 0;
 
 	QTextEdit* NameEdit;
 
