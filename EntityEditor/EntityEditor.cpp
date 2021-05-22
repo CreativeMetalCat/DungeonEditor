@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QJsonDocument>
 #include <QJsonArray>
+#include <QPushButton>
 
 #define SAFE_GET_JSON_VAR(obj,name,resultType,defaultVar) obj.keys().contains(name)?obj[name].to##resultType() : defaultVar
 
@@ -19,6 +20,8 @@ EntityEditor::EntityEditor(QWidget *parent)
 
     connect(ui.actionOpen, &QAction::triggered, this, &EntityEditor::OpenFile);
     connect(ui.actionSave, &QAction::triggered, this, &EntityEditor::SaveFile);
+
+    connect(ui.addNewItemButton, &QPushButton::pressed, this, &EntityEditor::AddNewItem);
 }
 
 void EntityEditor::OpenFile() 
@@ -93,5 +96,15 @@ void EntityEditor::SaveFile()
 
             }
         }
+    }
+}
+
+void EntityEditor::AddNewItem()
+{
+    if (FileName != "")
+    {
+        EnitityEditItem* item = new EnitityEditItem(EntityData(),this);
+        scrollAreaLayout->addWidget(item);
+        Entities.push_back(item);
     }
 }

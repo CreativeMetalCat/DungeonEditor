@@ -22,9 +22,9 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="addNewItemButton">
       <property name="text">
-       <string>PushButton</string>
+       <string>Add New Item</string>
       </property>
      </widget>
     </item>

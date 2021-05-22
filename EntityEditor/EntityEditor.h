@@ -26,4 +26,6 @@ private slots:
     void OpenFile();
 
     void SaveFile();
+
+    void AddNewItem();
 };

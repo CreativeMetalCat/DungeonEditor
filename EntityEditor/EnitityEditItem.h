@@ -15,9 +15,9 @@ struct EntityData
 {
 public:
 
-	QString Name;
+	QString Name = "item0";
 
-	QString DisplayName;
+	QString DisplayName = "item0";
 
 	int Health = 0;
 	int Damage = 0;
@@ -33,6 +33,8 @@ public:
 	EntityData(QString name,QString dispName,int health,int damage,int defence,int enemyType,int max,int min,int type):
 		Name(name),DisplayName(dispName),Health(health),Damage(damage),Defence(defence),EnemyType(enemyType),MaxMoney(max),MinMoney(min)
 	{}
+
+	EntityData() {}
 };
 
 class EnitityEditItem : public QWidget

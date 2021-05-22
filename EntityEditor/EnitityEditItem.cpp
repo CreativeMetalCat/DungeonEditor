@@ -1,7 +1,7 @@
 #include "EnitityEditItem.h"
 #include <QJsonArray>
 //Simple macro to simplify adding new items to this widget
-#define CREATEFIELD(spinbox,class) spinbox = new class(this);ui.horizontalLayout->addWidget(spinbox)
+#define CREATEFIELD(field,class) field = new class(this);ui.horizontalLayout->addWidget(field)
 
 EnitityEditItem::EnitityEditItem(EntityData data, QWidget* parent)
 	: QWidget(parent)
@@ -75,5 +75,6 @@ QJsonObject EnitityEditItem::GetJsonObject()
 	result["color_pair_id"] = 0;
 	result["items"] = QJsonArray();
 	result["type"] = comboBox->currentIndex();
+
 	return result;
 }
